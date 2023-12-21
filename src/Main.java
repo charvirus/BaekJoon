@@ -4,33 +4,30 @@ public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-        String[] strs = br.readLine().split(" ");
-        int[] arr = new int[8];
+
+        int cnt = Integer.parseInt(br.readLine());
+        String[] str = new String[cnt];
+        for (int i = 0; i < cnt; i++) {
+            str[i] = br.readLine();
+        }
+        int sum = 0;
         int chk = 0;
-        for (int i = 0; i < arr.length; i++) {
-            arr[i] = Integer.parseInt(strs[i]);
-        }
-        br.close();
-        int i = 0;
-        while (i < arr.length - 1) {
-            if (arr[i] - arr[i + 1] == 1) {
-                chk = -1;
-            } else if (arr[i] - arr[i + 1] == -1) {
-                chk = 1;
-            } else {
-                chk = 0;
-                break;
+
+        for (String s : str) {
+            for (int j = 0; j < s.length(); j++) {
+                // 다음 문자열이 O거나 X면 검사함
+                if (s.charAt(j) == 'O') {
+                    chk++;
+                    sum += chk;
+                } else {
+                    chk = 0;
+                }
             }
-            i++;
+            System.out.println(+sum);
+            sum = 0;
+            chk = 0;
         }
-        if (chk == -1) {
-            bw.write("descending");
-        } else if (chk == 1) {
-            bw.write("ascending");
-        } else {
-            bw.write("mixed");
-        }
+
         bw.flush();
     }
 }
-
