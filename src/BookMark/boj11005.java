@@ -10,21 +10,27 @@ public class boj11005 {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine(), " ");
 
-        String inp = st.nextToken();
+        int inp = Integer.parseInt(st.nextToken());
         int num = Integer.parseInt(st.nextToken());
-        int output = 0;
-        int mul = 1;
+        StringBuilder output = new StringBuilder();
 
-        for (int i = inp.length() - 1; i >= 0; i--) {
-            char c = inp.charAt(i);
-            if ('A' <= c && c <= 'Z') {
-                output += (c - 55) * mul;
+        while (inp != 0) {
+            char c;
+            int mod = inp % num;
+            if (10 <= mod && mod <= num) {
+                c = (char) (55 + mod);
+                output.append(c);
             } else {
-                output += (c - '0') * mul;
+                c = (char) ('0' + mod);
+                output.append(c);
             }
-            mul *= num; // 자릿수를 넘어갈때 곱을 해줘야함
+            inp /= num;
         }
 
-        System.out.println(output);
+        for (int i = output.length()-1; i >= 0; i--) {
+            System.out.print(output.charAt(i));
+        }
+        System.out.println();
+
     }
 }
