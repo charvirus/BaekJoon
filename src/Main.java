@@ -1,37 +1,35 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.StringTokenizer;
 
 public class Main {
+
+
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringBuilder sb = new StringBuilder();
-        int inp = Integer.parseInt(br.readLine());
+        StringTokenizer st;
+        boolean[] card = new boolean[20000001];
 
-        int[][] arr = new int[inp][2];
-
-        for (int i = 0; i < inp; i++) {
-            StringTokenizer st = new StringTokenizer(br.readLine(), " ");
-            arr[i][0] = Integer.parseInt(st.nextToken());
-            arr[i][1] = Integer.parseInt(st.nextToken());
+        int uInp = Integer.parseInt(br.readLine());
+        st = new StringTokenizer(br.readLine(), " ");
+        for (int i = 0; i < uInp; i++) {
+            card[Integer.parseInt(st.nextToken()) + 10000000] = true;
         }
 
-        Arrays.sort(arr, (e1, e2) -> {
-            if (e1[0] == e2[0]) {
-                // Comparator 문법으로 더 큰 수를 찾게 해주는 식임
-                return e1[1] - e2[1];
-            } else {
-                return e1[0] - e2[0];
-            }
-        });
-
-        for (int i = 0; i < inp; i++) {
-            sb.append(arr[i][0] + " " + arr[i][1] + "\n");
+        int cInp = Integer.parseInt(br.readLine());
+        st = new StringTokenizer(br.readLine(), " ");
+        for (int i = 0; i < cInp; i++) {
+            if(card[Integer.parseInt(st.nextToken()) + 10000000]){
+                sb.append(1);
+            }else{
+                sb.append(0);
+            }sb.append(" ");
         }
-
         System.out.println(sb);
     }
-
 }
