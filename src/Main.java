@@ -1,50 +1,28 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Objects;
 import java.util.Stack;
-import java.util.StringTokenizer;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringBuilder sb = new StringBuilder();
-        String s;
-        while (true) {
-            s = br.readLine();
-            if (s.equals(".")) {
-                break;
-            }
-            sb.append(solve(s)).append("\n");
-        }
-        System.out.println(sb);
-    }
-
-    static String solve(String sentence) {
-        Stack<Character> stack = new Stack<>();
-
-        for (int i = 0; i < sentence.length(); i++) {
-            char c = sentence.charAt(i);
-            if (c == '(' || c == '[') {
-                stack.push(c);
-            } else if (c == ')') {
-                if (stack.empty() || stack.peek() != '(') {
-                    return "no";
-                } else {
-                    stack.pop();
-                }
-            } else if (c == ']') {
-                if (stack.empty() || stack.peek() != '[') {
-                    return "no";
-                } else {
+        int sum = 0;
+        int cnt = Integer.parseInt(br.readLine());
+        Stack<Integer> stack = new Stack<>();
+        for (int i = 0; i < cnt; i++) {
+            int inp = Integer.parseInt(br.readLine());
+            if(inp != 0){
+                stack.push(inp);
+            }else {
+                if(!stack.empty()){
                     stack.pop();
                 }
             }
         }
-        if (stack.empty()) {
-            return "yes";
-        } else {
-            return "no";
+
+        for (Integer integer : stack) {
+            sum += integer;
         }
+        System.out.println(sum);
     }
 }
