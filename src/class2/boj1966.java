@@ -25,7 +25,7 @@ public class boj1966 {
             }
 
             int count = 0;
-
+            // 큐의 제일 큰 수를 0번째에 오게 만들어 소거해 정렬 한 뒤 순서 찾는 식
             while (!q.isEmpty()) {
                 int[] front = q.poll();
                 boolean max = true;
