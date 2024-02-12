@@ -33,10 +33,12 @@ public class boj2108 {
 
         for (int i = 4000 + min; i <= max + 4000; i++) {
             if (arr[i] > 0) {
+                // 중앙값을 찾는 코드
                 if (count < (A + 1) / 2) {
                     count += arr[i];
                     median = i - 4000;
                 }
+                // 최빈값을 찾는 코드
                 if (mode_max < arr[i]) {
                     mode_max = arr[i];
                     mode = i - 4000;
