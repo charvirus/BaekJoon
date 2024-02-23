@@ -17,27 +17,27 @@ public class boj11723 {
             String op = st.nextToken();
             int num;
 
-            switch (op){
-                case "add" :
+            switch (op) {
+                case "add":
                     num = Integer.parseInt(st.nextToken());
-                    bitset |= (1 << (num));
+                    bitset |= (1 << (num - 1));
                     break;
-                case "remove" :
+                case "remove":
                     num = Integer.parseInt(st.nextToken());
-                    bitset &= ~(1 << (num ));
+                    bitset &= ~(1 << (num - 1));
                     break;
-                case "check" :
+                case "check":
                     num = Integer.parseInt(st.nextToken());
-                    sb.append((bitset & (1 << (num ))) != 0 ? "1\n" : "0\n");
+                    sb.append((bitset & (1 << (num - 1))) != 0 ? "1\n" : "0\n");
                     break;
-                case "toggle" :
+                case "toggle":
                     num = Integer.parseInt(st.nextToken());
-                    bitset ^= (1 << (num));
+                    bitset ^= (1 << (num - 1));
                     break;
-                case "all" :
+                case "all":
                     bitset |= -1;
                     break;
-                case "empty" :
+                case "empty":
                     bitset &= 0;
                     break;
             }
