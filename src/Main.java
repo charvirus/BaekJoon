@@ -1,15 +1,11 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-<<<<<<< HEAD
-import java.util.*;
 =======
->>>>>>> origin/update
 
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-<<<<<<< HEAD
         StringBuilder sb = new StringBuilder();
         StringTokenizer st;
         int cnt = Integer.parseInt(br.readLine());
@@ -47,9 +43,6 @@ public class Main {
             }
         }
         System.out.println(sb);
-=======
-        int inp = Integer.parseInt(br.readLine());
-        System.out.println((int)Math.pow(2,inp));
->>>>>>> origin/update
+
     }
 }
