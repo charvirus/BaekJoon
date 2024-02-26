@@ -1,38 +1,35 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.StringTokenizer;
 
 public class Main {
-    static Integer dp[];
-    static int arr[];
+
+    static int[][] dp = new int[30][30];
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
-        int N = Integer.parseInt(br.readLine());
-
-        dp = new Integer[N + 1];
-        arr = new int[N + 1];
-
-        for (int i = 1; i <= N; i++) {
-            arr[i] = Integer.parseInt(br.readLine());
+        StringBuilder sb = new StringBuilder();
+        StringTokenizer st;
+        int time = Integer.parseInt(br.readLine());
+        for (int i = 0; i < time; i++) {
+            st = new StringTokenizer(br.readLine(), " ");
+            int a = Integer.parseInt(st.nextToken());
+            int b = Integer.parseInt(st.nextToken());
+            sb.append(combi(b, a)).append("\n");
         }
-
-        dp[0] = arr[0];
-        dp[1] = arr[1];
-
-        if (N >= 2) {
-            dp[2] = arr[1] + arr[2];
-        }
-
-        System.out.println(find(N));
+        System.out.println(sb);
     }
 
-    static int find(int num) {
-
-        if (dp[num] == null) {
-            dp[num] = Math.max(find(num - 2), find(num - 3) + arr[num - 1]) + arr[num];
+    static int combi(int n, int r) {
+        if (dp[n][r] > 0) {
+            return dp[n][r];
         }
-        return dp[num];
+
+        if (n == r || r == 0) {
+            return dp[n][r] = 1;
+        }
+
+        return dp[n][r] = combi(n - 1, r - 1) + combi(n - 1, r);
     }
 }
