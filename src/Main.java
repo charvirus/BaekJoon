@@ -1,35 +1,45 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.StringTokenizer;
 
 public class Main {
 
-    static int[][] dp = new int[30][30];
+    static int inp;
+    static boolean[] prime = new boolean[1004001];
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringBuilder sb = new StringBuilder();
-        StringTokenizer st;
-        int time = Integer.parseInt(br.readLine());
-        for (int i = 0; i < time; i++) {
-            st = new StringTokenizer(br.readLine(), " ");
-            int a = Integer.parseInt(st.nextToken());
-            int b = Integer.parseInt(st.nextToken());
-            sb.append(combi(b, a)).append("\n");
+        setPrime();
+        inp = Integer.parseInt(br.readLine());
+        for (int i = inp;; i++) {
+            if ((!prime[i] && checkPelin(i))) {
+                System.out.println(i);
+                break;
+            }
         }
-        System.out.println(sb);
+
     }
 
-    static int combi(int n, int r) {
-        if (dp[n][r] > 0) {
-            return dp[n][r];
+    static void setPrime() {
+        int sqrt = (int) Math.sqrt(prime.length);
+        prime[0] = true;
+        prime[1] = true;
+        for (int i = 2; i <= sqrt; i++) {
+            for (int j = i; j * i < prime.length; j++) {
+                prime[i * j] = true;
+            }
         }
-
-        if (n == r || r == 0) {
-            return dp[n][r] = 1;
-        }
-
-        return dp[n][r] = combi(n - 1, r - 1) + combi(n - 1, r);
     }
+
+    static boolean checkPelin(int i) {
+        String str = Integer.toString(i);
+        int length = str.length();
+        for (int j = 0; j < length / 2; j++) {
+            if (str.charAt(j) != str.charAt(length - j - 1)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
 }
