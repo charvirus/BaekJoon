@@ -1,9 +1,11 @@
+package BookMark;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.*;
 
-public class Main {
+public class boj20920 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine(), " ");
@@ -21,6 +23,7 @@ public class Main {
             @Override
             public int compare(String o1, String o2) {
                 if (Integer.compare(map.get(o1), map.get(o2)) != 0) {
+                    System.out.println(map.get(o1)+":"+map.get(o2));
                     return Integer.compare(map.get(o2), map.get(o1));
                 }
                 if (o1.length() != o2.length()) {
@@ -30,11 +33,15 @@ public class Main {
             }
         });
 
+        for (Map.Entry<String, Integer> entrySet : map.entrySet()) {
+            System.out.println(entrySet.getKey() + " : " + entrySet.getValue());
+        }
+
+
         StringBuilder sb = new StringBuilder();
-        for(String str : words){
-            sb.append(str+"\n");
+        for (String str : words) {
+            sb.append(str + "\n");
         }
         System.out.println(sb);
     }
-
 }

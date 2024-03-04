@@ -23,6 +23,7 @@ public class boj11650 {
         Arrays.sort(arr, (e1, e2) -> {
             if (e1[0] == e2[0]) {
                 // Comparator 문법으로 더 큰 수를 찾게 해주는 식임
+                // sort 메소드 안에서 return 으로 나오는 값이 양수면 값을 서로 바꿈
                 return e1[1] - e2[1];
             } else {
                 return e1[0] - e2[0];
