@@ -32,12 +32,13 @@ public class boj24060 {
     static void mergeSort(int[] arr, int h, int t) {
         if (h < t) {
             int q = (h + t) / 2;
-            mergeSort(arr, h, q);
-            mergeSort(arr, q + 1, t);
-            merge(arr,h,q,t);
+            mergeSort(arr, h, q);       // 전반부 정렬
+            mergeSort(arr, q + 1, t);// 후반부 정렬
+            merge(arr,h,q,t);           // 병합
         }
     }
 
+    // 정렬된 배열을 병합
     static void merge(int[] arr, int h, int m, int t) {
         int i = h;
         int j = m + 1;
@@ -49,16 +50,16 @@ public class boj24060 {
                 temp[k++] = arr[j++];
             }
         }
-        while (i <= m) {
+        while (i <= m) {        // 왼쪽 배열이 남는 경우
             temp[k++] = arr[i++];
         }
-        while (j <= t) {
+        while (j <= t) {        // 오른쪽 배열이 남는 경우
             temp[k++] = arr[j++];
         }
 
         i = h;
         k = 0;
-        while (i <= t) {
+        while (i <= t) {        // 결과를 배열 A에 저장
             cnt++;
             if(cnt == K){
                 result = temp[k];
