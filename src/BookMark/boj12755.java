@@ -12,6 +12,7 @@ public class boj12755 {
         int cnt = 0;
         while (true) {
             i++;
+            // 자릿수 확인하는 코드, 자릿수가 얼마냐에 따라 cnt 더해지는 값이 바뀜
             cnt += (int) Math.floor(Math.log10(i)) + 1;
             if (cnt >= n) {
                 break;
