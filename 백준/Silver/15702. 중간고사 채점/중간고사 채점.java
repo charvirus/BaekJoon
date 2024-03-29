@@ -1,25 +1,24 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Objects;
-import java.util.StringTokenizer;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+
         int x = Integer.parseInt(st.nextToken());
         int y = Integer.parseInt(st.nextToken());
         int[] score = new int[x];
-        int[] students = new int[100001];
-        int maxScore = 0;
+
         st = new StringTokenizer(br.readLine(), " ");
         for (int i = 0; i < x; i++) {
             score[i] = Integer.parseInt(st.nextToken());
         }
-        for (int i = 0; i < 100001; i++) {
-            students[i] = -1;
-        }
+
+        List<Student> list = new ArrayList<>();
+
         for (int i = 0; i < y; i++) {
             st = new StringTokenizer(br.readLine(), " ");
             int num = Integer.parseInt(st.nextToken());
@@ -30,16 +29,31 @@ public class Main {
                     totalScore += score[j];
                 }
             }
-            students[num] = totalScore;
-            maxScore = Math.max(maxScore,totalScore);
+            list.add(new Student(num, totalScore));
         }
 
-        for (int i = 1; i <= 100000; i++) {
-            if (students[i] == maxScore) {
-                System.out.println(i + " " + maxScore);
-                break;
+        Collections.sort(list);
+        System.out.println(list.get(0).num + " " +list.get(0).score);
+    }
+
+    static class Student implements Comparable<Student> {
+        int num;
+        int score;
+
+        public Student(int num, int score) {
+            this.num = num;
+            this.score = score;
+        }
+        @Override
+        public int compareTo(Student o) {
+            if (this.score > o.score) {
+                return -1;
             }
-        }
+            if (this.score < o.score) {
+                return 1;
+            }
 
+            return this.num - o.num;
+        }
     }
 }
