@@ -1,31 +1,23 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.StringTokenizer;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        final BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringBuilder statementStr = new StringBuilder();
-
-        // 값 입력
-        List<Integer> integerList = new ArrayList<>();
-        String str;
-        while ((str = br.readLine()) != null) {
-            statementStr.append(str);
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder sentence = new StringBuilder();
+        int sum = 0;
+        String inp;
+        while ((inp = br.readLine()) != null) {
+            sentence.append(inp);
         }
 
-        // 숫자 parsing
-        StringTokenizer st = new StringTokenizer(statementStr.toString(), ",");
-        while (st.hasMoreTokens()) {
-            integerList.add(Integer.valueOf(st.nextToken()));
+        String[] arr = sentence.toString().split(",");
+        for(String i : arr){
+            sum += Integer.parseInt(i);
         }
-
-        // 합 출력
-        System.out.println(integerList.stream().mapToInt(Integer::intValue).sum());
-        br.close();
+        System.out.println(sum);
     }
 
 }
