@@ -16,9 +16,6 @@ public class Main {
         int Z = Integer.parseInt(st.nextToken());
         long sum = 0;
         for (int i = 0; i < 3; i++) {
-            int addX = 0;
-            int addY = 0;
-            int addZ = 0;
             int chicken = Math.min(A, X);
             sum += chicken;
             A -= chicken;
@@ -31,21 +28,10 @@ public class Main {
             sum += hamburger;
             C -= hamburger;
             Z -= hamburger;
-            if (Z >= 3) {
-                addX += Z / 3;
-                Z = Z - (Z / 3 * 3);
-            }
-            if (X >= 3) {
-                addY += X / 3;
-                X = X - (X / 3 * 3);
-            }
-            if (Y >= 3) {
-                addZ += Y / 3;
-                Y = Y - (Y / 3 * 3);
-            }
-            X += addX;
-            Y += addY;
-            Z += addZ;
+
+            X = Z / 3;
+            Z = Y / 3;
+            Y = X / 3;
         }
         System.out.println(sum);
     }
