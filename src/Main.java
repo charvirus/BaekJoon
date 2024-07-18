@@ -1,65 +1,45 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.StringTokenizer;
 
 public class Main {
-    static int max = 0;
-    static int totalcnt = 0;
-    static int y;
-    static int x;
-
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st = new StringTokenizer(br.readLine(), " ");
-        int cnt = 0;
+        int max = 0;
+        int prev = 0;
+        int N = Integer.parseInt(br.readLine());
+        int[] rankStand = new int[4];
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        for (int i = 0; i < 4; i++) {
+            rankStand[i] = Integer.parseInt(st.nextToken());
+        }
+        String mvpRank = br.readLine();
 
-        y = Integer.parseInt(st.nextToken());
-        x = Integer.parseInt(st.nextToken());
-        String[][] arr = new String[y][x];
-
-        for (int i = 0; i < y; i++) {
-            st = new StringTokenizer(br.readLine(), " ");
-            for (int j = 0; j < x; j++) {
-                arr[i][j] = st.nextToken();
+        for (int i = 0; i < N; i++) {
+            switch (mvpRank.charAt(i)) {
+                case 'B':
+                    max += rankStand[0] - prev - 1;
+                    prev = rankStand[0] - prev - 1;
+                    break;
+                case 'S':
+                    max += rankStand[1] - prev - 1;
+                    prev = rankStand[1] - prev - 1;
+                    break;
+                case 'G':
+                    max += rankStand[2] - prev - 1;
+                    prev = rankStand[2] - prev - 1;
+                    break;
+                case 'P':
+                    max += rankStand[3] - prev - 1;
+                    prev = rankStand[3] - prev - 1;
+                    break;
+                default:
+                    max += rankStand[3];
+                    prev = rankStand[3];
+                    break;
             }
         }
 
-        checkXY(arr);
-
-        System.out.println(totalcnt - max);
-    }
-
-    static void checkXY(String[][] arr) {
-        for (int i = 0; i < y; i++) {
-            int cnt = 0;
-            for (int j = 0; j < x; j++) {
-                for (int k = 0; k < arr[i][j].length(); k++) {
-                    if (arr[i][j].charAt(k) == '9') {
-                        cnt++;
-                        totalcnt++;
-                    }
-                }
-            }
-            if (cnt > max) {
-                max = cnt;
-            }
-        }
-
-        for (int i = 0; i < x; i++) {
-            int cnt = 0;
-            for (int j = 0; j < y; j++) {
-                for (int k = 0; k < arr[j][i].length(); k++) {
-                    if (arr[j][i].charAt(k) == '9') {
-                        cnt++;
-                    }
-                }
-            }
-            if (cnt > max) {
-                max = cnt;
-            }
-        }
-
+        System.out.println(max);
 
     }
 }
