@@ -1,5 +1,7 @@
-N = int(input())
-nameList = [input() for i in range(N)]
+import sys
+
+N = int(sys.stdin.readline())
+nameList = [sys.stdin.readline().strip() for i in range(N)]
 
 nameList = list(set(nameList))
 
