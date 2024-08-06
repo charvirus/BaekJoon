@@ -12,7 +12,7 @@ def LCM(a, b):
 
 
 N = sys.stdin.readline().strip()
-planet = num_list = list(map(int, input().split()))
+planet = num_list = list(map(int, sys.stdin.readline().split()))
 
 res = 1
 for i in planet:
