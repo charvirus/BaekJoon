@@ -4,29 +4,20 @@ import sys
 input = sys.stdin.readline
 
 N, R = map(int, input().split())
-xList = []
-yList = []
-for i in range(N):
-    x, y = map(int, input().split())
-    xList.append(x)
-    yList.append(y)
-minX = min(xList)
-maxX = max(xList)
+rice = [list(map(int, input().split())) for i in range(N)]
 
 cnt = 0
 rx, ry = 0, 0
 
-for i in range(minX,maxX+1):
-    for j in range(minX,maxX+1):
+for i in range(-100, 101):
+    for j in range(-100, 101):
         tmpCnt = 0
-        for x,y in zip (xList,yList):
-            r = math.sqrt(((i-x)**2)+((j-y)**2))
-            if r <= R:
+        for x, y in rice:
+            if (i - x) ** 2 + (j - y) ** 2 <= R * R:
                 tmpCnt += 1
 
         if cnt < tmpCnt:
             cnt = tmpCnt
-            rx = i
-            ry = j
+            rx, ry = i, j
 
-print(rx,ry)
+print(rx, ry)
