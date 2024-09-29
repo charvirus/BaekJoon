@@ -4,13 +4,13 @@ input = sys.stdin.readline
 
 T = int(input())
 for i in range(T):
+    wcnt = 0
+    left = 0
     TM, MD, WD = map(int, input().split())
-    result = 0
-    cnt = 0
     for j in range(TM):
-        if (MD + cnt) % WD == 0:
-            result += (MD + cnt) // WD
+        if (left + MD) % WD == 0:
+            wcnt += (left + MD) // WD
         else:
-            result += ((MD + cnt) // WD) + 1
-            cnt = (MD + cnt) % WD
-    print(f'Case #{i + 1}: {int(result)}')
+            wcnt += (left + MD) // WD + 1
+            left = (left + MD) % WD
+    print(f'Case #{i+1}: {wcnt}')
