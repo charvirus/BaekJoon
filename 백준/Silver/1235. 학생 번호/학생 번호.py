@@ -3,13 +3,9 @@ import sys
 input = sys.stdin.readline
 k = 1
 N = int(input())
-inpl = []
-for i in range(N):
-    inpl.append(input().strip())
-
+l = [input().strip() for i in range(N)]
 while True:
-    if len(set([i[-1 * k:] for i in inpl])) == N:
+    if len(set([i[-1 * k:] for i in l])) == N:
         print(k)
         break
-    else:
-        k += 1
+    k += 1
