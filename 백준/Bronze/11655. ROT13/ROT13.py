@@ -3,6 +3,7 @@ import sys
 input = sys.stdin.readline
 
 inp = input()
+inp = list(inp)
 for i in inp:
     asc = 0
     if i.isalpha():
