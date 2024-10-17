@@ -3,13 +3,12 @@ from collections import deque
 input = sys.stdin.readline
 def BFS(v):
     global cnt
-    queue =  deque()
-    queue.append(v)
+    queue =  deque([v])
     vstd[v] = 1
     while queue:
         d = queue.popleft()
         for i in sorted(smap[d]):
-            if not vstd[i]:
+            if vstd[i] == 0:
                 queue.append(i)
                 cnt += 1
                 vstd[i] = cnt
