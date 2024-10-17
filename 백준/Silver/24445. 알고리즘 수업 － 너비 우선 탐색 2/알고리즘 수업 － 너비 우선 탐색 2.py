@@ -1,5 +1,5 @@
 import sys
-
+from collections import deque
 input = sys.stdin.readline
 
 N, M, V = map(int, input().split())
@@ -12,10 +12,11 @@ for i in range(M):
     smap[a].append(b)
     smap[b].append(a)
 
-queue = [V]
+queue =  deque()
+queue.append(V)
 vstd[V] = 1
-while len(queue) != 0:
-    d = queue.pop(0)
+while queue:
+    d = queue.popleft()
     for i in sorted(smap[d],reverse=True):
         if not vstd[i]:
             queue.append(i)
