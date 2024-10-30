@@ -1,10 +1,9 @@
 word = [0 for i in range(26)]
 while True:
     try:
-        inStr = str(input())
+        inStr = str(input()).replace(" ","")
         for s in inStr:
-            if s.islower(): 
-                word[ord(s)-97] += 1
+            word[ord(s)-97] += 1
     except EOFError:
         break
 for i in range(26):
