@@ -1,6 +1,5 @@
 import sys
 input = sys.stdin.readline
-
 D = input().strip()
 t = input().strip() + input().strip()
 ans = [".OP.", "I..P", "O..P"]
@@ -10,13 +9,11 @@ elif D == "W":
     t = t[1] + t[3] + t[0] + t[2]
 elif D == "N":
     t = t[3] + t[2] + t[1] + t[0]
-for i in range(3):
-    if t == ans[i]:
-        if i == 0:
-            print("T")
-        if i == 1:
-            print("F")
-        if i == 2:
-            print("Lz")
-        exit()
-print("?")
+if t == ans[0]:
+    print("T")
+elif t == ans[1]:
+    print("F")
+elif t == ans[2]:
+    print("Lz")
+else:
+    print("?")
