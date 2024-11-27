@@ -1,7 +1,3 @@
-import sys
-
-input = sys.stdin.readline
-
 n = int(input())
 inp = input().strip()
 tmp = [1, 1, 1, 1]
