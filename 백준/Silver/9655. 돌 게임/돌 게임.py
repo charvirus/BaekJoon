@@ -1,1 +1,4 @@
-print('SK'if int(input())%2else'CY')
+if int(input())%2 : 
+    print('SK')
+else : 
+    print('CY')
