@@ -1,1 +1,1 @@
-print("CY" if int(input())%7 in (0,2)else "SK")
+print('CY'if int(input())%7in(0,2)else'SK')
