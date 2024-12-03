@@ -10,12 +10,11 @@ def fac(x):
             facs.append(i)
     return facs
 
-
 for i in range(int(input())):
     inp = int(input())
     facts = fac(inp)
     flag = True
-    if sum(fac(facts[-1])) - facts[-1] <= facts[-1]:
+    if sum(fac(inp)) - inp <= inp:
         print("BOJ 2022")
         flag = False
     else:
