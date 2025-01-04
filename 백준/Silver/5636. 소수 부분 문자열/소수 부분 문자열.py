@@ -11,14 +11,11 @@ while True:
         for j in range(i+1,len(x)+1):
             flag = False
             c  = int(x[i:j])
-            if c % 2 == 0 and c > 2:
-                continue
-            else:
-                for k in range(2,int(c**(1/2))+1):
-                    if c % k == 0:
-                        flag = True
-                        break
+            for k in range(2,int(c**(1/2))+1):
+                if c % k == 0:
+                    flag = True
+                    break
 
-                if not flag and 100000 >= c >= mx :
-                    mx = c
+            if not flag and 100000 > c >= mx :
+                mx = c
     print(mx)
