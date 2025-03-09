@@ -1,7 +1,3 @@
-import sys
-
-input = sys.stdin.readline
-
 n,x = map(int,input().split())
 l = list(map(int,input().split()))
 
@@ -15,7 +11,4 @@ for i in range(n-x):
         top = win
     elif top == win:
         cnt += 1
-if top :
-    print(top,cnt,sep="\n")
-else:
-    print("SAD")
+print(*(top, cnt) if top else ["SAD"], sep="\n")
