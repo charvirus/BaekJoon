@@ -4,11 +4,11 @@ input = sys.stdin.readline
 
 n, m, k = map(int, input().split())
 cnt = 0
-arr = [map(int, input().strip()) for i in range(n)]
+arr = [input().strip() for i in range(n)]
 for i in arr:
     chk = 0
     for j in i:
-        if j == 0:
+        if j == '0':
             chk += 1
         else:
             chk = 0
