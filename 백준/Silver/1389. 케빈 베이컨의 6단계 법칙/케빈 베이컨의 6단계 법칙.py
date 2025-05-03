@@ -4,36 +4,33 @@ from collections import deque
 input = sys.stdin.readline
 
 n, m = map(int, input().split())
-arr = [[] for _ in range(n + 1)]
+graph = [[] for _ in range(n + 1)]
 
 for i in range(m):
     a, b = map(int, input().split())
-    arr[a].append(b)
-    arr[b].append(a)
+    graph[a].append(b)
+    graph[b].append(a)
 
-def bfs(st):
-    vstd = [-1] * (n + 1)
+
+def bfs(s):
+    vst = [-1] * (n + 1)
 
     q = deque()
-    q.append(st)
-    vstd[st] = 0
+    q.append(s)
+    vst[s] = 0
 
     while q:
-        node = q.popleft()
-
-        for i in arr[node]:
-            if vstd[i] == -1:
-                vstd[i] = vstd[node] + 1
+        nd = q.popleft()
+        for i in graph[nd]:
+            if vst[i] == -1:
+                vst[i] = vst[nd] +1
                 q.append(i)
-    total = sum(vstd)
-    return total
-
-mm = 5000
-ans = 0
+    return sum(vst)
+ans = 5000
+r=0
 for i in range(1, n + 1):
-    total = bfs(i)
-    if total < mm:
-        mm = total
-        ans = i
-
-print(ans)
+    t = bfs(i)
+    if ans > t:
+        r = i
+        ans = t
+print(r)
