@@ -1,11 +1,17 @@
 n = int(input())
-l = int(input())
+m = int(input())
 s = input()
-idx = n * 2 + 1
-chk = "IO" * n + "I"
-cnt = 0
 
-for i in range(0, l - idx+1):
-    if s[i:i + idx] == chk:
+ans,i,cnt = 0,0,0
+
+while i < m-1:
+    if s[i:i+3] == "IOI":
+        i += 2
         cnt += 1
-print(cnt)
+        if cnt == n:
+            ans += 1
+            cnt -= 1
+    else:
+        i += 1
+        cnt = 0
+print(ans)
