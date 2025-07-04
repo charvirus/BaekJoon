@@ -15,26 +15,17 @@ bool chk(int x) {
 }
 
 int main() {
-    cin.tie(0);
-    cout.tie(0);
-    ios_base::sync_with_stdio(false);
-
     int pn;
     cin >> pn;
     for (int a = 0; a < 9; a++) {
         int x, y;
         cin >> y >> x;
         arr[y - 1][x - 1] = pn;
-
         if (chk(pn)) {
             cout << pn << '\n';
             return 0;
         }
-        if (pn == 1) {
-            pn = 2;
-        } else {
-            pn = 1;
-        }
+        pn = 3 - pn;
     }
     cout << 0 << '\n';
     return 0;
