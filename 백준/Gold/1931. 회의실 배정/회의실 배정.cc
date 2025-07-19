@@ -11,7 +11,7 @@ int main() {
     for (int i = 0; i < n; i++) {
         int s, e;
         cin >> e >> s;
-        list.push_back({s, e});
+        list.emplace_back(s, e);
     }
     sort(list.begin(), list.end());
     int end = list[0].first;
