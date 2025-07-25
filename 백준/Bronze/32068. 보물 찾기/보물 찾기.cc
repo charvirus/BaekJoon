@@ -1,4 +1,5 @@
 #include <iostream>
+#include <queue>
 using namespace std;
 
 int main() {
@@ -6,16 +7,12 @@ int main() {
     int t, l, r, s;
     cin >> t;
     while (t--) {
-        int cnt = 1;
         cin >> l >> r >> s;
-        while (l != s && r != s) {
-            if (cnt % 2 == 1) {
-                s += cnt;
-            } else if (cnt % 2 == 0) {
-                s -= cnt;
-            }
-            cnt++;
+        int ls = s - l, rs = r - s;
+        if (rs > ls) {
+            cout << ls * 2 + 1 << '\n';
+        } else {
+            cout << rs * 2 << '\n';
         }
-        cout << cnt << '\n';
     }
 }
