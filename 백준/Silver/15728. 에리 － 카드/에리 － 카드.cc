@@ -14,7 +14,7 @@ int main(void) {
     for (int i = 0; i < n; i++)
         cin >> team[i];
     int ans, pos;
-    for (int i = -1; i < k; i++) {
+    for (int i = 0; i <= k; i++) {
         ans = -1000000007, pos = -1;
         for (int j = 0; j < n; j++) {
             for (int l = 0; l < n; l++) {
