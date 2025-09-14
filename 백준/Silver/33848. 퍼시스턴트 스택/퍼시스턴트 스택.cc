@@ -12,7 +12,7 @@ int main(void) {
     cin >> n;
     stack<int> stk;
     stack<pair<int,int>> hst;
-    for (int i = 0; i < n; i++) {
+    while (n--){
         int inp;
         cin >> inp;
         switch (inp) {
@@ -45,10 +45,10 @@ int main(void) {
                 cout << stk.size() << "\n";
                 break;
             case 5:
-                if (stk.size()) {
-                    cout << stk.top() << "\n";
-                } else {
+                if (stk.empty()) {
                     cout << -1 << "\n";
+                } else {
+                    cout << stk.top() << "\n";
                 }
                 break;
         }
