@@ -3,10 +3,9 @@ using namespace std;
 
 int main(void) {
     ios::sync_with_stdio(false), cin.tie(NULL);
-    int n, m, k, ann = 0, ant = 0;
+    int n, m, k;
     cin >> n >> m >> k;
     int arr[n][m], sm[n] = {0,};
-    bool flag = false;
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < m; j++) {
             cin >> arr[i][j];
