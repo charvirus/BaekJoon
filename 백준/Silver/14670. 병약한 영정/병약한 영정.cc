@@ -9,7 +9,7 @@ vector<int> ans;
 
 int main(void) {
     ios::sync_with_stdio(false), cin.tie(NULL);
-    memset(a, 0xff, sizeof(a));
+    memset(a, -1, sizeof(a));
     cin >> n;
     while (n--) {
         int x, y;
