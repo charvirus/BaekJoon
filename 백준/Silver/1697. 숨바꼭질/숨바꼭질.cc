@@ -4,7 +4,6 @@
 
 using namespace std;
 int n, k;
-
 queue<pair<int, int> > q;
 bool vst[100001];
 
@@ -22,23 +21,17 @@ int main(void) {
             cout << cnt << endl;
             break;
         }
-        if (0 <= x + 1 && x + 1 < 100001) {
-            if (!vst[x + 1]) {
-                vst[x + 1] = true;
-                q.push({x + 1, cnt + 1});
-            }
+        if (0<=x-1&&x - 1 < 100001 && !vst[x - 1]) {
+            vst[x - 1] = true;
+            q.push({x - 1, cnt + 1});
         }
-        if (0 <= x - 1 && x - 1 < 100001) {
-            if (!vst[x - 1]) {
-                vst[x - 1] = true;
-                q.push({x - 1, cnt + 1});
-            }
+        if (x + 1 < 100001 && !vst[x + 1]) {
+            vst[x + 1] = true;
+            q.push({x + 1, cnt + 1});
         }
-        if (0 <= x * 2 && x * 2 < 100001) {
-            if (!vst[x * 2]) {
-                vst[x * 2] = true;
-                q.push({x * 2, cnt + 1});
-            }
+        if (x * 2 < 100001 && !vst[x * 2]) {
+            vst[x * 2] = true;
+            q.push({x * 2, cnt + 1});
         }
     }
 }
