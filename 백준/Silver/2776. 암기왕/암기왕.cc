@@ -1,6 +1,6 @@
 #include <algorithm>
 #include <iostream>
-#include <map>
+#include <vector>
 
 using namespace std;
 
@@ -10,16 +10,17 @@ int main(void) {
     ios::sync_with_stdio(false), cin.tie(NULL);
     cin >> t;
     while (t--) {
-        map<int,int>mp;
-        cin >> n;
+        vector<int>s;
+        cin >>n;
         for (int i = 0; i < n; i++) {
-            cin >> inp;
-            mp[inp] = 1;
+            cin >> m;
+            s.push_back(m);
         }
+        sort(s.begin(), s.end());
         cin >> m;
         for (int i = 0; i < m; i++) {
-            cin >> inp;
-            if (mp[inp]) {
+            cin >> n;
+            if (binary_search(s.begin(), s.end(), n)) {
                 cout <<"1\n";
             }else {
                 cout <<"0\n";
