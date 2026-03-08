@@ -1,7 +1,7 @@
 #include <algorithm>
 #include <iostream>
 using namespace std;
-int n, arr[10000][10000];
+int n, arr[1024][1024];
 
 int req(int x, int y, int n) {
     int ans[4] = {0,};
