@@ -9,9 +9,9 @@ int main(void) {
     cin >> n >> k >> p;
     for (int i = 1; i <= n * k; i++) {
         cin >> inp;
-        cnt += inp;
+        cnt += 1 - inp;
         if (i % k == 0) {
-            if (cnt >= p) {
+            if (cnt < p) {
                 ans++;
             }
             cnt = 0;
