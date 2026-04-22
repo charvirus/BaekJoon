@@ -1,7 +1,5 @@
 #include <algorithm>
-#include <iomanip>
 #include <iostream>
-#include <vector>
 using namespace std;
 
 double dia, turn, ttime;
@@ -9,7 +7,6 @@ int cnt;
 
 int main(void) {
     ios::sync_with_stdio(false), cin.tie(NULL);
-    cout << fixed << setprecision(2);
     while (1) {
         cnt++;
         cin >> dia >> turn >> ttime;
